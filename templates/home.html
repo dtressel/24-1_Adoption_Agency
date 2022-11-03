@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Adoption Agency - Home{% endblock %}
+
+{% block content %}
+  <h1>Pets</h1>
+  <div class="pet-listing-container">
+    {% for pet in pets %}
+    <figure class="pet-listing">
+      <a href="/pet/{{pet.id}}"><img class="pet-photo" src="{{pet.photo_url}}"></a>
+      <figcaption>
+        <span class="pet-name">{{pet.name}}</span>
+        {% if pet.available %}
+        <span class="pet-availability">is available!</span>
+        {% endif %}
+      </figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+  <a class="button ok-bckg" href="/add">Add a Pet</a>
+{% endblock %}

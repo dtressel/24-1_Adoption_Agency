@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Adoption Agency - Add Pet{% endblock %}
+
+{% block content %}
+<h2>New Pet Form:</h2>
+<form class="form-grid" method="POST">
+  {{ form.hidden_tag() }}
+  <ul class="form-list">
+  {% for field in form if field.widget.input_type != 'hidden' %}
+    <li class="form-row">
+      {{field.label}}
+      {{field}}
+    </li>
+    {% for err in field.errors %}
+      <div class="error-row">
+        <div class="spacer"></div>
+        <div class="form-row-error">{{err}}</div>
+      </div>
+    {% endfor %}
+  {% endfor %}
+  </ul>
+  <div class="form-row">
+    <div class="spacer"></div>
+    <div class="button-indent">
+      <button type="submit" class="button ok-bckg form-grid-input">Submit</button>
+      <a class="button cancel-bckg form-grid-input" href="/">Cancel</a>
+    </div>
+  </div>
+</form>
+{% endblock %}
